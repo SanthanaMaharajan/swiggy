@@ -1694,7 +1694,7 @@ openCart.addEventListener("click", function(){
 closeCart.addEventListener("click",function(){
    cartContainer.classList.remove("open-modal");
    cartContainer.classList.add("close-modal");
-   setTimeout(hiddenDisplay, 2000);
+   setTimeout(hiddenDisplay, 1000);
 });
 function hiddenDisplay(){
     cartContainer.style.display="none";
@@ -1706,8 +1706,15 @@ let checkoutForm=document.getElementById("checkout-form");
 
 checkoutForm.addEventListener("submit",function(event){
     event.preventDefault()
-    event.ret
-    alert("Your order has been successfully processed");
+    document.querySelector(".order-confirmation-modal").classList.remove("hidden");
+    document.querySelector(".overlay").classList.remove("hidden"); 
+    document.querySelector(".confirm-icon").classList.add("confirmation-icon-animation");   
+})
+
+function backToHome(){
+    document.querySelector(".order-confirmation-modal").classList.add("hidden");
+    document.querySelector(".overlay").classList.add("hidden"); 
+    document.querySelector(".confirm-icon").classList.remove("confirmation-icon-animation");   
     let cartColumn=document.querySelectorAll(".cart-col")
     for(let i=0;i<cartColumn.length;i++){
         cartRow.removeChild(cartColumn[i]);
@@ -1723,10 +1730,9 @@ checkoutForm.addEventListener("submit",function(event){
     resetItemTotal();
     cartContainer.classList.remove("open-modal");
     cartContainer.classList.add("close-modal");
-    setTimeout(hiddenDisplay, 2000);
+    hiddenDisplay();
     checkoutForm.reset();
-})
-
+}
 
 
 

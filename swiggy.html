@@ -69,12 +69,12 @@
                     <div class="address-container">
                         <input type="text"  id="user-name" placeholder="Name" required autocomplete="off" >
                         <input type="email" id="email" placeholder="Your Email here" required autocomplete="off">
-                        <input type="number" id="mobile" max="9999999999" placeholder="Your mobile No." required autocomplete="off">
+                        <input type="text" id="mobile"  minlength="10" maxlength="10" placeholder="Your mobile No." required autocomplete="off">
                         <input type="text" id="door-no" placeholder="Door/Flat No." required autocomplete="off">
                         <input type="text" id="address" placeholder="Your Address here" required autocomplete="off">
                         <input type="text" id="city" placeholder="City/Town/Village" required autocomplete="off">
                         <input type="text" id="state" placeholder="State" required autocomplete="off">
-                        <input type="text" id="pincode" placeholder="Pincode" minlength="6" maxlength="6" required autocomplete="off">
+                        <input type="text" id="pincode"  placeholder="Pincode" minlength="6" maxlength="6" required autocomplete="off">
                         <div class="address-radio">
                             <input type="radio" name="addtype" value="home" id="home" required autocomplete="off">
                             <label for="home"><i class="bi bi-house-door"></i> Home</label>
@@ -117,7 +117,21 @@
             </div>
             
         </div>
-        
+
+        <div class="order-confirmation-modal hidden">
+            <div class="confirmation-icon">
+                <i class="bi bi-check2 confirm-icon"></i>
+            </div>
+            <div class="confirmation-msg">
+                <h3>Payment complete</h3>
+                <p>Order Received Successfully!!!!</p>
+                <p>Thank you for your order, Your order will be delivered shortly...</p>
+            </div>
+            <div class="back-to-home">
+                <button onclick="backToHome()">Back to Home</button>
+            </div>
+        </div>
+        <div class="overlay hidden"></div>
     </nav>
     <div class="container">
          <!-- Category section -->
