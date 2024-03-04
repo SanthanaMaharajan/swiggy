@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swiggy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.webp" type="image/x-icon">
+    <link rel="stylesheet" href="css/swiggy.css">
+</head>
+<body>
+
+    <!-- navbar section -->
+        
+    <nav>
+        <div class="logo">
+            <img src="images/logo.png" alt="">
+        </div>
+        <div class="navbar">
+           <ul>
+                <li><a href="swiggy.html"><i class="bi bi-house-door"></i>Home</a></li>
+                <li><a href="#"><i class="bi bi-search"></i>search</a></li>
+                <li><a href="#"><i class="bi bi-percent"></i>offers</a></li>
+                <li><a href="#"><i class="bi bi-info-circle"></i>Help</a></li>
+                <li><a href="#" id="user-log"><i class="bi bi-person-check-fill"></i>user</a>
+                    <div class="dropdown">
+                        <a href="index.html"><i class="bi bi-person-fill-lock"></i>Logout</a>
+                    </div>
+                </li>
+                <li><a href="#" id="open-cart"><i class="bi bi-bag"></i>cart <sup id="cart-number">0</sup></a></li>
+            </ul> 
+        </div>
+
+        <div class="cart-container close-modal">
+            <div class="shopping-cart">
+                    <div class="cart-head">
+                        <h3>Shopping Cart</h3>
+                        <h3><span id="items-number">0</span> items</h3>
+                    </div>
+                    
+                    <div class="cart-items">
+                        <div class="product-details">
+                            <p>PRODUCT DETAILS</p>
+                        </div>
+                        <div class="product-quantity">
+                            <p>QUANTITY</p>
+                        </div>
+                        <div class="product-price">
+                            <p>PRICE</p>
+                        </div>
+                        <div class="product-total">
+                            <p>TOTAL</p>
+                        </div>
+                    </div>
+                    <div class="cart-row">
+                
+                    </div>
+                <button id="close-cart"><i class="bi bi-arrow-left"></i> Continue Shopping</button>
+
+                </div>    
+                
+                
+                <div class="checkout-container">
+                    <div class="address-head">
+                        <h3>Add Delivery Address</h3>                       
+                    </div>
+                    <form id="checkout-form" >
+                    <div class="address-container">
+                        <input type="text"  id="user-name" placeholder="Name" required autocomplete="off" >
+                        <input type="email" id="email" placeholder="Your Email here" required autocomplete="off">
+                        <input type="number" id="mobile" max="9999999999" placeholder="Your mobile No." required autocomplete="off">
+                        <input type="text" id="door-no" placeholder="Door/Flat No." required autocomplete="off">
+                        <input type="text" id="address" placeholder="Your Address here" required autocomplete="off">
+                        <input type="text" id="city" placeholder="City/Town/Village" required autocomplete="off">
+                        <input type="text" id="state" placeholder="State" required autocomplete="off">
+                        <input type="text" id="pincode" placeholder="Pincode" minlength="6" maxlength="6" required autocomplete="off">
+                        <div class="address-radio">
+                            <input type="radio" name="addtype" value="home" id="home" required autocomplete="off">
+                            <label for="home"><i class="bi bi-house-door"></i> Home</label>
+                            <input type="radio" name="addtype" value="office" id="office" required autocomplete="off">
+                            <label for="office"><i class="bi bi-building"></i> Office</label>
+                        </div>
+                            <button type="submit" id="payment-btn">Save Address & Make Payment</button>
+                    </div>
+                    </form>
+                    <button id="cart-back"><i class="bi bi-arrow-left"></i> Back</button>
+                </div>
+
+            <div class="order-summary">
+                <div class="summary-head">
+                    <h3>Order Summary</h3>
+                </div>
+                
+                <div class="summary-details">
+                    <h5>ITEM TOTAL</h5>
+                    <h5><i class='bi bi-currency-rupee'></i> <span id="item-total"> 0</span></h5>
+                </div>
+                <div class="shipping-details">
+                    <h5>DELIVERY</h5>
+                    <div class="shipping-charges">
+                    <p>Delivery Charges</p> 
+                    <p><i class='bi bi-currency-rupee'></i> <span id="delivery-charges"> 0</span></p>
+                    </div>
+                </div>    
+                <h5>TAX</h5>
+                <div class="tax-details">
+                    <p>GST 18%:</p>
+                    <p><i class='bi bi-currency-rupee'></i> <span id="item-tax"> 0</span></p>
+                </div>
+                
+                <div class="summary-total">
+                    <h4>TOTAL COST</h4>
+                    <h3><i class='bi bi-currency-rupee'></i> <span id="total-pay">0</span></h3>
+                </div>
+                <button id="check-out">CHECK OUT</button>
+            </div>
+            
+        </div>
+        
+    </nav>
+    <div class="container">
+         <!-- Category section -->
+         <section id="category">
+            <h1>What's on your mind?</h1>
+            <div class="food-category">
+                <div class="food-col">
+                    <a href="#product-section" id="biriyani" onclick="categoryFilter('Biriyani')"><img src="images/Biryani_2.avif" alt=""></a>
+                </div>
+                <div class="food-col">
+                    <a href="#product-section" id="dosa" onclick="categoryFilter('Dosa')"><img src="images/Dosa.avif" alt=""></a>
+                </div>
+                <div class="food-col">
+                    <a href="#product-section" id="Noodles" onclick="categoryFilter('Idli')"><img src="images/Idli.avif" alt=""></a>
+                </div>
+                <div class="food-col">
+                    <a href="#product-section" id="chinese" onclick="categoryFilter('Chinese')"><img src="images/Chinese.avif" alt=""></a>
+                </div>
+                <div class="food-col">
+                    <a href="#product-section" id="cakes" onclick="categoryFilter('Cake')"><img src="images/Cakes.avif" alt=""></a>
+                </div>
+                <div class="food-col">
+                    <a href="#product-section" id="sandwich" onclick="categoryFilter('Sandwich')"><img src="images/Sandwich.avif" alt=""></a>
+                </div>
+            </div>
+         </section>
+         
+        <!-- Restaurant section -->
+        <section id="restaurant">
+            <div class="restaurant-head">
+                <h1>Top restaurant chains in Chennai</h1>
+                <div>
+                    <button id="pre-btn"><i class="bi bi-arrow-left"></i></button>
+                    <button id="nxt-btn"><i class="bi bi-arrow-right"></i></button>
+                </div>
+            </div>
+            <div class="restaurant-container">
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('Subway')">
+                        <img src="images/restaurant1.avif" alt="">
+                        <h3>Subway</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.3 </span> <span>  • 15 mins</span>
+                        <p>Salads, Snacks, Desserts, Beverages</p>
+                        <p>Sholinganallur</p>
+                    </a>
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('French Loaf')">
+                        <img src="images/restaurant2.avif" alt="">
+                        <h3>French Loaf</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.4</span><span> • 15 mins</span>
+                        <p>Desserts, Cakes and Pastries, Bakery, Snacks, Pizzas, Beverages</p>
+                        <p>Neelankarai</p>
+                    </a>    
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('Namma Veedu Vasanta Bhavan')">
+                        <img src="images/restaurant3.avif" alt="">
+                        <h3>Namma Veedu Vasanta Bhavan</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.3</span><span>• 31 mins</span>
+                        <p>South Indian</p>
+                        <p>Medavakkam</p>
+                    </a>    
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('Chai Kings')">
+                        <img src="images/restaurant4.avif" alt="">
+                        <h3>Chai Kings</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.5</span><span>• 25 mins</span>
+                        <p>Beverages, Snacks, Bakery</p>
+                        <p>Sri Sowdeswari Nagar</p>
+                    </a>
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('A2B - Adyar Ananda Bhavan')">
+                        <img src="images/restaurant5.avif" alt="">
+                        <h3>A2B - Adyar Ananda Bhavan</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.4</span><span>• 41 mins</span>
+                        <p>South Indian, North Indian, Sweets, Chinese</p>
+                        <p>Pallikaranai</p>
+                    </a>    
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('Hot Chips')">
+                        <img src="images/restaurant6.avif" alt="">
+                        <h3>Hot Chips</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.4</span><span>• 30 mins</span>
+                        <p>North Indian, South Indian, Street Food</p>
+                        <p>Medavakkam</p>
+                    </a>
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('JR Jana Veg Restaurant')">
+                        <img src="images/restaurant7.avif" alt="">
+                        <h3>JR Jana Veg Restaurant</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.4</span><span>• 34 mins</span>
+                        <p>Chinese, Indian, South Indian</p>
+                        <p>Tambaram</p>
+                    </a>
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('The Belgian Waffle Cafe')">
+                        <img src="images/restaurant8.avif" alt="">
+                        <h3>The Belgian Waffle Cafe</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.5</span><span>• 61 mins</span>
+                        <p>Snacks, Desserts, Beverages</p>
+                        <p>Velachery</p>
+                    </a>
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('Hotel Saravana Bhavan')">
+                        <img src="images/restaurant9.avif" alt="">
+                        <h3>Hotel Saravana Bhavan</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.5</span><span>• 45 mins</span>
+                        <p>South Indian, North Indian, Sweets</p>
+                        <p>Perungudi</p>
+                    </a>
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('Murugan Idli Shop')">
+                        <img src="images/restaurant10.avif" alt="">
+                        <h3>Murugan Idli Shop</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.3</span><span>• 56 mins</span>
+                        <p>South Indian</p>
+                        <p>Velachery</p>
+                    </a>
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('Barbeque Nation')">
+                        <img src="images/restaurant11.avif" alt="">
+                        <h3>Barbeque Nation</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.5</span><span>• 30 mins</span>
+                        <p>Andhra, South Indian</p>
+                        <p>Thoraipakkam</p>
+                    </a>
+                </div>
+                <div class="restaurant-col">
+                    <a href="#product-section" onclick="storeFilter('Mani\'s Dum Biriyani')">
+                        <img src="images/restaurant12.avif" alt="">
+                        <h3>Mani's Dum Biriyani</h3>
+                        <span class="star-rating"><i class="bi bi-star-fill"></i></span><span>4.4</span><span>• 42 mins</span>
+                        <p>Biriyani, Chinese, South Indian</p>
+                        <p>Karapakkam</p>
+                    </a>
+                </div>
+            </div>
+
+        </section>
+        <!-- filter hotels -->
+
+        <section id="filter-hotels">
+
+            <div class="filter-head">
+                <h1>Restaurants with online food delivery in Chennai</h1>
+            </div>
+            <div class="filter-btns">
+                <button id="resfilter">Filter<i class="bi bi-funnel"></i></button>
+                <button id="reshigh"><i class='bi bi-star-fill'></i> High to Low</button>
+                <button id="reslow"><i class='bi bi-star-fill'></i> Low to High</button>
+                <button id="deltime">Delivery time</button>
+                <button id="vegres">Pure Veg</button>
+                <button id="non-vegres">Non Veg</button>
+                <button id="clear-res">clear filters</button>
+            </div>
+            <div class="hotel-display">
+                
+            </div>
+        </section>
+
+        <!-- product displaysection -->
+            <section id="product-section" class="hidden">
+                <div class="product-main-container">
+                    <div class="product-container" id="product-containerid">
+                        <h1>Restaurants with online food delivery in Chennai</h1>
+                        <div class="filter-btns">
+                            <button id="filter">Filter<i class="bi bi-funnel"></i></button>
+                            <button id="gt4"><i class='bi bi-star-fill'></i> High to Low</button>
+                            <button id="vlt4"><i class='bi bi-star-fill'></i> Low to High</button>
+                            <button id="lth">Price Low to High</button>
+                            <button id="htl">Price High to Low </button>
+                            <button id="veg">Pure Veg</button>
+                            <button id="non-veg">Non Veg</button>
+                            <button id="clear-filter">clear filters</button>
+                        <div class="hotel-head">
+                            <img id="store-photo">
+                            <div class="hotel-details">
+                                <h1 id="store-name"></h1>
+                                <span class="star-rating"><i class='bi bi-star-fill'></i></span><span id="hotel-rate"></span>
+                                <p id="store-time"></p>
+                                <p id="store-details"></p>
+                                <p id="store-location"></p>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>        
+            </section>
+
+
+        <section id="app-locator">
+            <h1>For better experience,download the Swiggy app now</h1>
+            <img src="images/play_store.avif" alt="">
+            <img src="images/app_store.avif" alt="">
+        </section>
+    </div>
+    <!-- footer section -->
+    <footer>
+        <div class="container" id="footer">
+            <div class="logo-container col">
+                <img src="images/logo.png" alt="">
+                <p>&copy; 2023 Bundl Technologies Pvt. Ltd</p>
+            </div>
+            <div class="company-details col">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Careers</a></li>
+                    <li><a href="">Team</a></li>
+                    <li><a href="">Swiggy One</a></li>
+                    <li><a href="">Swiggy Instamart</a></li>
+                    <li><a href="">Swiggy Genie</a></li>
+                </ul>    
+            </div>
+            <div class="contactus col">
+                <h3>Contact us</h3>
+                <ul>
+                    <li><a href="">Help & Support</a></li>
+                    <li><a href="">Partner with us</a></li>
+                    <li><a href="">Ride with us</a></li>
+                </ul>
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="">Cookie Policy</a></li>
+                    <li><a href="">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="deliver col">
+                <h3>We deliver to:</h3>
+                <ul>
+                    <li><a href="">Bangalore</a></li>
+                    <li><a href="">Gurgaon</a></li>
+                    <li><a href="">Hyderabad</a></li>
+                    <li><a href="">Delhi</a></li>
+                    <li><a href="">Mumbai</a></li>
+                    <li><a href="">Pune</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="js/product.js" ></script>
+    <!-- <script src="js/script.js"></script> -->
+</body>
+</html>
